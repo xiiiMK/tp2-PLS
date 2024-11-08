@@ -1,23 +1,65 @@
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+main, article, aside {
+    overflow: auto;
+    padding: 15px;
+}
+
+.element {
+    position: relative;
+}
+
+.scrollable-content {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 15px;
+    box-sizing: content-box;
+}
+
+main.element {
+    height: 250px;
+}
+
+article.element {
+    height: 300px;
+}
+
+aside.wow.element {
+    height: auto;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollable-content {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollable-content:hover {
+    overflow-y: scroll;
 }
 
 .grille {
     display: grid;
     grid-template-columns: 30% 40% 30%;
-    grid-template-rows: 2% 6% 39% 40% 13%;
+    grid-template-rows: auto auto 1fr 1fr auto;
     grid-template-areas:
         "header header header"
         "nav nav nav"
         "main main aside"
         "figure article aside"
         "footer footer footer";
-    height: 100%;
+    height: 100vh;
     width: 100%;
+    max-width: 100%;
     margin: auto;
 }
 
@@ -47,6 +89,7 @@ header {
     color: rgba(89, 168, 185, 255);
     background-color: black;
     text-align: center;
+    display: none;
 }
 
 nav {
@@ -111,6 +154,7 @@ figure {
     margin-left: 50px;
     margin-bottom: 40px;
     font-size: 20px;
+    color: rgba(89, 168, 185, 255);
 }
 
 ul {
@@ -195,18 +239,17 @@ ul {
 }
 
 .gallery-image_kb2 {
-    width: 400px;
+    width: 401px;
     height: auto;
     margin: 10px;
     border-radius: 10px;
-    transition: transform  0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .gallery-image_kb2:hover {
     transform: scale(1.05);
     opacity: 0.8;
 }
-
 
 @keyframes fadeIn {
     from {
@@ -215,19 +258,22 @@ ul {
     to {
         opacity: 1;
     }
-}.learning-item {
+}
+
+.learning-item {
     margin-bottom: 15px;
     padding: 15px;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
     animation: float 3s ease-in-out infinite, background-animation 10s linear infinite;
-    background-color:  rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     border: 5px solid transparent;
     background-clip: padding-box;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
 #ce-que-jai-appris {
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.1);
@@ -237,6 +283,8 @@ ul {
     position: relative;
     overflow: hidden;
     animation: fadeIn 1s ease-in-out;
+    color: aliceblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .learning-item::before {
@@ -255,7 +303,7 @@ ul {
 
 .learning-item:hover {
     transform: scale(1.05) rotate(2deg) perspective(1000px) rotateY(5deg);
-    box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.527);
 }
 
 .learning-item h3 {
@@ -308,7 +356,7 @@ ul {
         background-color: #e9e9e9;
     }
     100% {
-        background-color: #f9f9f9;
+ background-color: #f9f9f9;
     }
 }
 
@@ -385,37 +433,100 @@ ul {
     }
 }
 
-.confetti {
+.confetti-container {
     position: absolute;
     width: 100%;
     height: 100%;
-    pointer-events : none;
     overflow: hidden;
-    z-index: 10;
-    display: none;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
-.learning-item:hover .confetti {
-    display: block;
-    animation: confetti-fall 1s forwards;
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 1;
+    pointer-events: none;
 }
 
 @keyframes confetti-fall {
     0% {
-        transform: translateY(-100%);
+        transform: translateY(0);
         opacity: 1;
     }
     100% {
-        transform: translateY(100%);
+        transform: translateY(100vh);
         opacity: 0;
     }
 }
-.footer_kb2 {
+
+.footer_kb2, .learning-item {
     text-align: center;
     padding: 10px;
-    background-color: #333;
     color: white;
     position: relative;
     bottom: 0;
     width: 100%;
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400%;
+    animation: gradient-border 5s linear infinite;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+#ce-que-jai-appris p {
+    position: relative;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s ease;
+}
+
+#ce-que-jai-appris p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+}
+
+#ce-que-jai-appris p:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+#ce-que-jai-appris p:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+#ce-que-jai-appris p:hover::after {
+    animation: ripple 0.6s ease forwards;
+}
+
+.white_text {
+    color: white;
 }
