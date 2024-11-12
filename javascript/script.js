@@ -7,6 +7,7 @@ function toggleScroll() {
 }
 
 toggleScroll();
+document.body.style.overflowX = 'hidden'; 
 
 window.addEventListener('resize', toggleScroll);
 
