@@ -1,9 +1,5 @@
 function toggleScroll() {
-    if (window.innerWidth > 1785) {
         document.body.style.overflowX = 'hidden'; 
-    } else {
-        document.body.style.overflowX = 'auto'; 
-    }
     
     document.body.style.overflowY = 'auto'; 
 }
