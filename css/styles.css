@@ -5,6 +5,9 @@ html, body {
     padding: 0;
     overflow-x: hidden;
 }
+body{
+    overflow: auto;
+}
 
 main, article, aside {
     overflow: auto;
@@ -329,7 +332,7 @@ ul {
     filter: blur(5px);
     animation: rainbow-background 5s linear infinite;
 }
-
+/* J'ai utilsier ce video et le site w3c pour apprendre comment faire les fond d'ecran rgb animer : https://dev.to/devlawrence/creating-a-confetti-effect-from-scratch-using-html-css-and-javascript-4poi et https://www.w3schools.com/css/css3_animations.asp */
 @keyframes rainbow-animation {
     0% {
         background-position: 0%;

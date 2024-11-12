@@ -27,3 +27,6 @@ function getRandomColor() {
     }
     return color;
 }
+
+
+// j'ai utiliser ce site web pour apprendre comment en faire : https://dev.to/devlawrence/creating-a-confetti-effect-from-scratch-using-html-css-and-javascript-4poi
