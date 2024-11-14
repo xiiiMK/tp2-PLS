@@ -1,5 +1,5 @@
 function toggleScroll() {
-    if (window.innerHeight < 810) {
+    if (window.innerHeight <810) {
         document.body.style.overflowY = 'auto';
     } else {
         document.body.style.overflowY = 'hidden';
@@ -7,7 +7,7 @@ function toggleScroll() {
 }
 
 toggleScroll();
-document.body.style.overflowX = 'hidden'; 
+document.body.style.overflowX = 'hidden';
 
 window.addEventListener('resize', toggleScroll);
 
